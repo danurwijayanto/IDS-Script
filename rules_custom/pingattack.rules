@@ -1,0 +1,1 @@
+alert icmp 192.168.43.199 any -> 192.168.43.73 any (msg: "Ping DDOS Attack Detected"; sid:11200001)
