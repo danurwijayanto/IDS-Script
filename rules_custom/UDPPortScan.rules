@@ -1,0 +1,6 @@
+alert udp 192.168.43.199 any -> 192.168.43.73 162 (msg: "UDP Port Scan Attack"; sid:12000003)
+alert udp 192.168.43.199 any -> 192.168.43.73 161 (msg: "UDP Port Scan Attack"; sid:12000004)
+alert udp 192.168.43.199 any -> 192.168.43.73 123 (msg: "UDP Port Scan Attack"; sid:12000005)
+alert udp 192.168.43.199 any -> 192.168.43.73 123 (msg: "UDP Port Scan Attack"; sid:12000006)
+alert udp 192.168.43.199 any -> 192.168.43.73 161 (msg: "UDP Port Scan Attack"; sid:12000007)
+alert udp 192.168.43.199 any -> 192.168.43.73 162 (msg: "UDP Port Scan Attack"; sid:12000008)
