@@ -1,2 +1,2 @@
 #!/bin/bash
-sqlmap -u "192.168.43.73" --dbs
+sqlmap -u "172.10.1.5" --dbs
