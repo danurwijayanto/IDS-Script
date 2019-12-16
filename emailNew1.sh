@@ -28,17 +28,11 @@ PingAttackStatus="Aman"
 PingAttack=$(grep "Ping DDOS Attack Detected" /var/log/auth.log -c)
 #bodyPingAttack=$(grep "Ping DDOS Attack Detected" /var/log/auth.log | head -n 1)
 
-BatasWaspada=400
+BatasWaspada=20
 BatasBahaya=4000
 
 StatusWaspada=0
 StatusBahaya=0
-
-echo $TCPPortScan
-echo $UDPPortScan
-echo $SQLINJECTIONAttack
-echo $PingAttack
-echo $SynDDOSAttack
 
 if [[ "$SynDDOSAttack" -gt "$BatasWaspada" || "$TCPPortScan" -gt "$BatasWaspada" || "$SQLINJECTIONAttack" -gt "$BatasWaspada" || "$UDPPortScan" -gt "$BatasWaspada" || "$PingAttack" -gt "$BatasWaspada" ]]; then
     StatusWaspada=1
@@ -99,72 +93,61 @@ if [[ "$StatusWaspada" -eq "1" || "$StatusBahaya" -eq "1" ]]; then
                 <tr>
                     <td>Tipe Serangan</td>
                     <td>Jumlah Serangan</td>
-                    <td>Kategori</td>
                 </tr>'
     telegramBody='Laporan Serangan'
     if [[ "$SynDDOSAttackStatus" != "Aman" ]]; then
         body=''"${body}"' <tr>
                         <td>Syn DDOS Attack</td>
                         <td>'"$SynDDOSAttack"'</td>
-                        <td>'"$SynDDOSAttackStatus"'</td>
                     </tr>'
         telegramBody='
         '"${telegramBody}"' 
         Jenis Serangan : Syn DDOS Attack
-        Jumlah Serangan : '"$SynDDOSAttack"'
-        Kategori : '"$SynDDOSAttackStatus"
+        Jumlah Serangan : '"$SynDDOSAttack"
     fi
 
     if [[ $TCPPortScanStatus != "Aman" ]]; then
         body=''"${body}"' <tr>
                         <td>TCP Port Attack</td>
                         <td>'"$TCPPortScan"'</td>
-                        <td>'"$TCPPortScanStatus"'</td>
                     </tr>'
         telegramBody='
         '"${telegramBody}"' 
         Jenis Serangan : TCP Port Attack
-        Jumlah Serangan : '"$TCPPortScan"'
-        Kategori : '"$TCPPortScanStatus"
+        Jumlah Serangan : '"$TCPPortScan"
     fi
 
     if [[ "$SQLINJECTIONAttackStatus" != "Aman" ]]; then
         body=''"${body}"' <tr>
                         <td>SQL Injection Attack</td>
                         <td>'"$SQLINJECTIONAttack"'</td>
-                        <td>'"$SQLINJECTIONAttackStatus"'</td>
                     </tr>'
         telegramBody='
         '"${telegramBody}"' 
         Jenis Serangan : SQL Injection Attack
-        Jumlah Serangan : '"$SQLINJECTIONAttack"'
-        Kategori : '"$SQLINJECTIONAttack"
+        Jumlah Serangan : '"$SQLINJECTIONAttack"
     fi
 
     if [[ "$UDPPortScanStatus" != "Aman" ]]; then
         body=''"${body}"' <tr>
                         <td>UDP Port Scan</td>
                         <td>'"$UDPPortScan"'</td>
-                        <td>'"$UDPPortScanStatus"'</td>
                     </tr>'
         telegramBody='
         '"${telegramBody}"' 
         Jenis Serangan : UDP Port Scan
-        Jumlah Serangan : '"$UDPPortScan"'
-        Kategori : '"$UDPPortScanStatus"
+        Jumlah Serangan : '"$UDPPortScan"
     fi
 
     if [[ "$PingAttackStatus" != "Aman" ]]; then
         body=''"${body}"' <tr>
                         <td>Ping Attack</td>
                         <td>'"$PingAttack"'</td>
-                        <td>'"$PingAttackStatus"'</td>
                     </tr>'
         telegramBody='
         '"${telegramBody}"' 
         Jenis Serangan : Ping Attack
-        Jumlah Serangan : '"$PingAttack"'
-        Kategori : '"$PingAttackStatus"
+        Jumlah Serangan : '"$PingAttack"
     fi
 
     body=''"${body}"' </table>
