@@ -28,7 +28,7 @@ PingAttackStatus="Aman"
 PingAttack=$(grep "Ping DDOS Attack Detected" /var/log/auth.log -c)
 #bodyPingAttack=$(grep "Ping DDOS Attack Detected" /var/log/auth.log | head -n 1)
 
-BatasWaspada=20
+BatasWaspada=2
 BatasBahaya=4000
 
 StatusWaspada=0
