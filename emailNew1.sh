@@ -86,15 +86,15 @@ if [[ "$StatusWaspada" -eq "1" || "$StatusBahaya" -eq "1" ]]; then
 
     body='<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
             <html>
-            <head><title>Daftar Serangan</title>
+            <head><title>List of Attacks</title>
             </head>
             <body>
             <table border="1">
                 <tr>
-                    <td>Tipe Serangan</td>
-                    <td>Jumlah Serangan</td>
+                    <td>Attack Type</td>
+                    <td>Total Attack</td>
                 </tr>'
-    telegramBody='Laporan Serangan'
+    telegramBody='Attack Report'
     if [[ "$SynDDOSAttackStatus" != "Aman" ]]; then
         body=''"${body}"' <tr>
                         <td>Syn DDOS Attack</td>
@@ -102,19 +102,19 @@ if [[ "$StatusWaspada" -eq "1" || "$StatusBahaya" -eq "1" ]]; then
                     </tr>'
         telegramBody='
         '"${telegramBody}"' 
-        Jenis Serangan : Syn DDOS Attack
-        Jumlah Serangan : '"$SynDDOSAttack"
+        Attack Type : Syn DDOS Attack
+        Total : '"$SynDDOSAttack"
     fi
 
-    if [[ $TCPPortScanStatus != "Aman" ]]; then
+    if [[ "$TCPPortScanStatus" != "Aman" ]]; then
         body=''"${body}"' <tr>
                         <td>TCP Port Attack</td>
                         <td>'"$TCPPortScan"'</td>
                     </tr>'
         telegramBody='
         '"${telegramBody}"' 
-        Jenis Serangan : TCP Port Attack
-        Jumlah Serangan : '"$TCPPortScan"
+        Attack Type : TCP Port Scan Attack
+        Total : '"$TCPPortScan"
     fi
 
     if [[ "$SQLINJECTIONAttackStatus" != "Aman" ]]; then
@@ -124,8 +124,8 @@ if [[ "$StatusWaspada" -eq "1" || "$StatusBahaya" -eq "1" ]]; then
                     </tr>'
         telegramBody='
         '"${telegramBody}"' 
-        Jenis Serangan : SQL Injection Attack
-        Jumlah Serangan : '"$SQLINJECTIONAttack"
+        Attack Type : SQL Injection Attack
+        Total : '"$SQLINJECTIONAttack"
     fi
 
     if [[ "$UDPPortScanStatus" != "Aman" ]]; then
@@ -135,8 +135,8 @@ if [[ "$StatusWaspada" -eq "1" || "$StatusBahaya" -eq "1" ]]; then
                     </tr>'
         telegramBody='
         '"${telegramBody}"' 
-        Jenis Serangan : UDP Port Scan
-        Jumlah Serangan : '"$UDPPortScan"
+        Attack Type : UDP Port Scan
+        Total : '"$UDPPortScan"
     fi
 
     if [[ "$PingAttackStatus" != "Aman" ]]; then
@@ -146,8 +146,8 @@ if [[ "$StatusWaspada" -eq "1" || "$StatusBahaya" -eq "1" ]]; then
                     </tr>'
         telegramBody='
         '"${telegramBody}"' 
-        Jenis Serangan : Ping Attack
-        Jumlah Serangan : '"$PingAttack"
+        Attack Type : Ping Attack
+        Total : '"$PingAttack"
     fi
 
     body=''"${body}"' </table>
